@@ -15,8 +15,6 @@ public class IMatchImpl implements IMatch {
     @Override
     public void insert(Match match) {
         PreparedStatement ps = null;
-        System.out.println(match.getEquipe1());
-        System.out.println(match.getEquipe2());
 
         try {
             ps = conn.prepareStatement("INSERT INTO footmatch (date,nbPlace,equipe1,equipe2,competition,idStade) " +
