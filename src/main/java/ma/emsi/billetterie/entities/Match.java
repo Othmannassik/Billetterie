@@ -104,6 +104,6 @@ public class Match implements Serializable {
 
     @Override
     public String toString() {
-        return "Match [id=" + id + ", date=" + date + ", nbPlace=" + nbPlace + ", equipe1=" + equipe1 + ", equipe2=" + equipe2 + ", competition=" + competition + ", stade=" + stade +"]";
+        return "Match [id=" + id + ", date=" + date + ", nbPlace=" + nbPlace + ", equipe1=" + equipe1 + ", equipe2=" + equipe2 + ", competition=" + competition + ", stade=" + stade.getName() +"]";
     }
 }

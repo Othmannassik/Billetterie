@@ -11,13 +11,15 @@ import java.util.List;
 public class IMatchImpl implements IMatch {
 
     private Connection conn= DB.getConnection();
-    private IStadeImpl stade;
+    private IStadeImpl stade = new IStadeImpl();
     @Override
     public void insert(Match match) {
         PreparedStatement ps = null;
+        System.out.println(match.getEquipe1());
+        System.out.println(match.getEquipe2());
 
         try {
-            ps = conn.prepareStatement("INSERT INTO match (date,nbPlace,equipe1,equipe2,competition,idStade) " +
+            ps = conn.prepareStatement("INSERT INTO footmatch (date,nbPlace,equipe1,equipe2,competition,idStade) " +
                     "VALUES (?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 
             ps.setDate(1, new Date(match.getDate().getTime()));
@@ -43,7 +45,7 @@ public class IMatchImpl implements IMatch {
                 System.out.println("Aucune ligne renvoyée");
             }
         } catch (SQLException e) {
-            System.err.println("problème d'insertion d'un match");;
+            System.err.println(e);;
         } finally {
             DB.closeStatement(ps);
         }
@@ -54,8 +56,8 @@ public class IMatchImpl implements IMatch {
         PreparedStatement ps = null;
 
         try {
-            ps = conn.prepareStatement("UPDATE match SET date = ? AND nbPlace = ? AND equipe1 = ? AND " +
-                    "equipe2 = ? AND competition = ? AND idStade = ? WHERE id = ?");
+            ps = conn.prepareStatement("UPDATE footmatch SET date = ? , nbPlace = ? , equipe1 = ? , " +
+                    "equipe2 = ? , competition = ? , idStade = ? WHERE id = ?");
 
             ps.setDate(1, new Date(match.getDate().getTime()));
             ps.setInt(2, match.getNbPlace());
@@ -80,7 +82,7 @@ public class IMatchImpl implements IMatch {
         PreparedStatement ps = null;
 
         try {
-            ps = conn.prepareStatement("DELETE FROM match WHERE id = ?");
+            ps = conn.prepareStatement("DELETE FROM footmatch WHERE id = ?");
 
             ps.setInt(1, id);
             ps.executeUpdate();
@@ -97,7 +99,7 @@ public class IMatchImpl implements IMatch {
         ResultSet rs = null;
 
         try {
-            ps = conn.prepareStatement("SELECT * FROM match WHERE id = ?");
+            ps = conn.prepareStatement("SELECT * FROM footmatch WHERE id = ?");
 
             ps.setInt(1, id);
 
@@ -133,7 +135,7 @@ public class IMatchImpl implements IMatch {
         ResultSet rs = null;
 
         try {
-            ps = conn.prepareStatement("SELECT * FROM match");
+            ps = conn.prepareStatement("SELECT * FROM footmatch");
             rs = ps.executeQuery();
 
             List<Match> listMatchs = new ArrayList<>();
@@ -145,7 +147,7 @@ public class IMatchImpl implements IMatch {
                 match.setDate(rs.getDate("date"));
                 match.setNbPlace(rs.getInt("nbPlace"));
                 match.setEquipe1(rs.getString("equipe1"));
-                match.setEquipe2(rs.getString("equipe1"));
+                match.setEquipe2(rs.getString("equipe2"));
                 match.setCompetition(Competition.valueOf(rs.getString("competition")));
                 match.setStade(stade.find(rs.getInt("idStade")));
 

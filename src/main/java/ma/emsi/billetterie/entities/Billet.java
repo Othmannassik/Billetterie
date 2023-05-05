@@ -62,6 +62,6 @@ public class Billet implements Serializable {
 
     @Override
     public String toString() {
-        return "Billet [id=" + id + ", prix=" + prix + ", Match=" + match +"]";
+        return "Billet [id=" + id + ", prix=" + prix + ", Match= [" + match.getEquipe1() + " VS "+ match.getEquipe2() + " - "+ match.getCompetition() + " IN "+ match.getStade().getName()+"]]";
     }
 }

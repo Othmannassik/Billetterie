@@ -10,7 +10,7 @@ import java.util.List;
 public class IBilletImpl implements IBillet {
 
     private Connection conn= DB.getConnection();
-    private IMatchImpl match;
+    private IMatchImpl match = new IMatchImpl();
     @Override
     public void insert(Billet billet) {
         PreparedStatement ps = null;
@@ -48,7 +48,7 @@ public class IBilletImpl implements IBillet {
         PreparedStatement ps = null;
 
         try {
-            ps = conn.prepareStatement("UPDATE billet SET prix = ? AND idMatch = ? WHERE id = ?");
+            ps = conn.prepareStatement("UPDATE billet SET prix = ? , idMatch = ? WHERE id = ?");
 
             ps.setDouble(1, billet.getPrix());
             ps.setDouble(2, billet.getMatch().getId());

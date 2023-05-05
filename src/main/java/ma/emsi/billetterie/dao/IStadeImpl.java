@@ -46,7 +46,7 @@ public class IStadeImpl implements IStade {
         PreparedStatement ps = null;
 
         try {
-            ps = conn.prepareStatement("UPDATE stade SET name = ? AND lieu = ? AND maxPlace = ? WHERE id = ?");
+            ps = conn.prepareStatement("UPDATE stade SET name = ? , lieu = ? , maxPlace = ? WHERE id = ?");
 
             ps.setString(1, stade.getName());
             ps.setString(2, stade.getLieu());
@@ -54,7 +54,7 @@ public class IStadeImpl implements IStade {
             ps.setInt(4, stade.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
-            System.err.println("problème de mise à jour d'un stade");;
+            System.err.println(e);;
         } finally {
             DB.closeStatement(ps);
         }
