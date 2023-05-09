@@ -10,4 +10,5 @@ public interface IMatch {
     void delete(int id);
     Match find(int id);
     List<Match> findAll();
+    void printMatchesTxtFile(String filePath);
 }

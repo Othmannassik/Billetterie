@@ -23,4 +23,7 @@ public class MatchService {
     public void remove(Match match) {
         matchDao.delete(match.getId());
     }
+    public void printMatchesIntoTxtFile(String file){
+        matchDao.printMatchesTxtFile(file);
+    }
 }

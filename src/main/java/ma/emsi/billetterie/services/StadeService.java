@@ -23,4 +23,7 @@ public class StadeService {
     public void remove(Stade stade) {
         stadeDao.delete(stade.getId());
     }
+    public void storeStadesFromTxtFile(String file){
+        stadeDao.storeStadeDataFromTxtFile(file);
+    }
 }

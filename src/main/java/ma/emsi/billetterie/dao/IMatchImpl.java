@@ -2,8 +2,8 @@ package ma.emsi.billetterie.dao;
 
 import ma.emsi.billetterie.entities.Competition;
 import ma.emsi.billetterie.entities.Match;
-import ma.emsi.billetterie.entities.Stade;
 
+import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -159,6 +159,22 @@ public class IMatchImpl implements IMatch {
         } finally {
             DB.closeResultSet(rs);
             DB.closeStatement(ps);
+        }
+    }
+
+    @Override
+    public void printMatchesTxtFile(String filePath) {
+
+        try( FileOutputStream outputFile = new FileOutputStream(filePath))
+        {
+            for(Match match : this.findAll()){
+                outputFile.write(match.toString().getBytes());
+                outputFile.write('\n');
+            }
+            System.out.println("Matches Data Printed into "+ filePath +" Successfully");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

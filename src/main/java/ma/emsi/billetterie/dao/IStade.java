@@ -10,4 +10,6 @@ public interface IStade {
     void delete(int id);
     Stade find(int id);
     List<Stade> findAll();
+
+    void storeStadeDataFromTxtFile(String filePath);
 }

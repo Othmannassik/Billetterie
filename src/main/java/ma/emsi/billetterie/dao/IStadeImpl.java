@@ -2,6 +2,10 @@ package ma.emsi.billetterie.dao;
 
 import ma.emsi.billetterie.entities.Stade;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -140,6 +144,36 @@ public class IStadeImpl implements IStade {
             DB.closeStatement(ps);
         }
 
+    }
+
+    @Override
+    public void storeStadeDataFromTxtFile(String filePath) {
+        BufferedReader br;
+        try {
+            br = new BufferedReader(new FileReader(filePath));
+            Stade stade = null;
+            String readLine = br.readLine();
+
+            while(readLine != null){
+
+                String [] std  = readLine.split("\\|");
+
+                stade = new Stade();
+                stade.setName(std[0].trim());
+                stade.setLieu(std[1].trim());
+                stade.setMaxPlace(Integer.parseInt(std[2].trim()));
+
+                insert(stade);
+                readLine = br.readLine();
+            }
+            System.out.println("Stade Data Stored Successfully in "+ filePath);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 

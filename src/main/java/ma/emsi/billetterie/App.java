@@ -4,8 +4,6 @@ import ma.emsi.billetterie.services.BilletService;
 import ma.emsi.billetterie.services.MatchService;
 import ma.emsi.billetterie.services.StadeService;
 
-import java.util.Date;
-
 /**
  * Hello world!
  *
@@ -16,5 +14,8 @@ public class App {
         StadeService stadeService = new StadeService();
         MatchService matchService = new MatchService();
         BilletService billetService = new BilletService();
+
+        stadeService.storeStadesFromTxtFile("src/main/resources/StadeData");
+        matchService.printMatchesIntoTxtFile("src/main/resources/MatchesList");
     }
 }
