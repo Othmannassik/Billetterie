@@ -3,10 +3,9 @@ package ma.emsi.billetterie.dao;
 import ma.emsi.billetterie.entities.Competition;
 import ma.emsi.billetterie.entities.Match;
 
-import java.io.*;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Date;
+import java.util.*;
 
 public class IMatchImpl implements IMatch {
 
@@ -162,19 +161,4 @@ public class IMatchImpl implements IMatch {
         }
     }
 
-    @Override
-    public void printMatchesTxtFile(String filePath) {
-
-        try( FileOutputStream outputFile = new FileOutputStream(filePath))
-        {
-            for(Match match : this.findAll()){
-                outputFile.write(match.toString().getBytes());
-                outputFile.write('\n');
-            }
-            System.out.println("Matches Data Printed into "+ filePath +" Successfully");
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
