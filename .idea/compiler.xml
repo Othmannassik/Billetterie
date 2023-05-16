@@ -9,8 +9,5 @@
         <module name="Billetterie" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="maven.readRwite" target="1.7" />
-    </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,7 +1,6 @@
 package ma.emsi.billetterie.dao;
 
 import ma.emsi.billetterie.entities.Billet;
-import ma.emsi.billetterie.entities.Stade;
 
 import java.sql.*;
 import java.util.ArrayList;
