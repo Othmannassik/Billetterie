@@ -6,5 +6,7 @@ module ma.emsi.billetterie {
 
 
     opens ma.emsi.billetterie to javafx.fxml;
+    opens ma.emsi.billetterie.entities to javafx.base;
+
     exports ma.emsi.billetterie;
 }
