@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="473.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.emsi.billetterie.BilletController">
+   <children>
+      <VBox layoutX="14.0" layoutY="121.0" prefHeight="232.0" prefWidth="247.0" spacing="15.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="121.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix" />
+            <TextField fx:id="TPrix" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Match" />
+            <ChoiceBox fx:id="TMatch" prefWidth="150.0" />
+         </children>
+      </VBox>
+      <TableView fx:id="Table" layoutX="282.0" layoutY="108.0" onMouseClicked="#getData" prefHeight="258.0" prefWidth="415.0" AnchorPane.rightAnchor="14.666666666666742" AnchorPane.topAnchor="108.0">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="124.6666259765625" text="Billet ID" />
+          <TableColumn fx:id="colPrix" prefWidth="115.99996948242188" text="Prix" />
+            <TableColumn fx:id="colMatch" prefWidth="158.0" text="Match" />
+        </columns>
+      </TableView>
+      <ButtonBar layoutX="34.0" layoutY="380.0" prefHeight="49.0" prefWidth="331.0">
+        <buttons>
+          <Button fx:id="btnSave" mnemonicParsing="false" onAction="#saveBillet" text="Save" />
+            <Button fx:id="btnUpdate" layoutX="244.0" layoutY="20.0" mnemonicParsing="false" onAction="#updateBillet" text="Update" />
+            <Button fx:id="btnDelete" layoutX="159.0" layoutY="20.0" mnemonicParsing="false" onAction="#deleteBillet" text="Delete" />
+            <Button fx:id="btnClear" layoutX="73.0" layoutY="20.0" mnemonicParsing="false" onAction="#clearField" text="Clear" />
+        </buttons>
+      </ButtonBar>
+      <Button fx:id="btnExportExcel" layoutX="513.0" layoutY="388.0" mnemonicParsing="false" onAction="#ExportToExcel" prefHeight="34.0" prefWidth="75.0" text="Export xlsx" />
+      <Button fx:id="btnImportExcel" layoutX="607.0" layoutY="388.0" mnemonicParsing="false" onAction="#ImportFromExcel" prefHeight="34.0" prefWidth="75.0" text="Import xlsx" />
+      <ButtonBar layoutX="28.0" layoutY="25.0" prefHeight="40.0" prefWidth="254.0">
+        <buttons>
+          <Button fx:id="btnMatches" mnemonicParsing="false" onAction="#toMatches" text="Liste des Matches" />
+            <Button fx:id="btnStades" mnemonicParsing="false" onAction="#toStades" text="Liste des Stades" />
+        </buttons>
+      </ButtonBar>
+   </children>
+</AnchorPane>

@@ -162,6 +162,16 @@ public class StadeController implements Initializable {
     @FXML
     void toBillets(ActionEvent event) {
         btnBillets.getScene().getWindow().hide();
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("Billet.fxml"));
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setTitle("Liste des Billets");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
