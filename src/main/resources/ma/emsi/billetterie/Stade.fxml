@@ -9,10 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="473.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.emsi.billetterie.StadeController">
    <children>
-      <VBox layoutX="14.0" layoutY="41.0" prefHeight="300.0" prefWidth="247.0" spacing="15.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="41.0">
+      <VBox layoutX="14.0" layoutY="121.0" prefHeight="232.0" prefWidth="247.0" spacing="15.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="121.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
             <TextField fx:id="TNom" />
@@ -22,7 +21,7 @@
             <TextField fx:id="TMaxPlace" />
          </children>
       </VBox>
-      <TableView fx:id="Table" layoutX="281.0" layoutY="70.0" onMouseClicked="#getData" prefHeight="258.0" prefWidth="415.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="70.0">
+      <TableView fx:id="Table" layoutX="282.0" layoutY="108.0" onMouseClicked="#getData" prefHeight="258.0" prefWidth="415.0" AnchorPane.rightAnchor="14.666666666666742" AnchorPane.topAnchor="108.0">
         <columns>
           <TableColumn fx:id="colId" prefWidth="62.666685700416565" text="Stade ID" />
           <TableColumn fx:id="colNom" prefWidth="121.99999237060547" text="Nom" />
@@ -30,7 +29,7 @@
             <TableColumn fx:id="colMaxPlace" prefWidth="106.6666259765625" text="Max Place" />
         </columns>
       </TableView>
-      <ButtonBar layoutX="34.0" layoutY="355.0" prefHeight="49.0" prefWidth="331.0">
+      <ButtonBar layoutX="34.0" layoutY="380.0" prefHeight="49.0" prefWidth="331.0">
         <buttons>
           <Button fx:id="btnSave" mnemonicParsing="false" onAction="#saveStade" text="Save" />
             <Button fx:id="btnUpdate" layoutX="244.0" layoutY="20.0" mnemonicParsing="false" onAction="#updateStade" text="Update" />
@@ -38,7 +37,13 @@
             <Button fx:id="btnClear" layoutX="73.0" layoutY="20.0" mnemonicParsing="false" onAction="#clearField" text="Clear" />
         </buttons>
       </ButtonBar>
-      <Button fx:id="btnExportExcel" layoutX="513.0" layoutY="363.0" mnemonicParsing="false" onAction="#ExportToExcel" prefHeight="34.0" prefWidth="75.0" text="Export xlsx" />
-      <Button fx:id="btnImportExcel" layoutX="608.0" layoutY="363.0" mnemonicParsing="false" onAction="#ImportFromExcel" prefHeight="34.0" prefWidth="75.0" text="Import xlsx" />
+      <Button fx:id="btnExportExcel" layoutX="513.0" layoutY="388.0" mnemonicParsing="false" onAction="#ExportToExcel" prefHeight="34.0" prefWidth="75.0" text="Export xlsx" />
+      <Button fx:id="btnImportExcel" layoutX="607.0" layoutY="388.0" mnemonicParsing="false" onAction="#ImportFromExcel" prefHeight="34.0" prefWidth="75.0" text="Import xlsx" />
+      <ButtonBar layoutX="28.0" layoutY="25.0" prefHeight="40.0" prefWidth="254.0">
+        <buttons>
+          <Button fx:id="btnMatches" mnemonicParsing="false" onAction="#toMatches" text="Liste des Matches" />
+            <Button fx:id="btnBillets" mnemonicParsing="false" onAction="#toBillets" text="Liste des Billets" />
+        </buttons>
+      </ButtonBar>
    </children>
 </AnchorPane>

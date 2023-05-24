@@ -10,4 +10,6 @@ public interface IStade {
     void delete(int id);
     Stade find(int id);
     List<Stade> findAll();
+
+    Stade getStadeByNom(String nom);
 }

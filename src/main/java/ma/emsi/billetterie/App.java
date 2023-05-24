@@ -5,10 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ma.emsi.billetterie.entities.User;
-import ma.emsi.billetterie.services.UserService;
-
-import java.security.NoSuchAlgorithmException;
 
 /**
  * Hello world!
@@ -17,7 +13,7 @@ import java.security.NoSuchAlgorithmException;
 public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        Parent parent = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getResource("Match.fxml"));
         Scene scene = new Scene(parent);
         stage.setTitle("Login");
         stage.setScene(scene);

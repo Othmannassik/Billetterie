@@ -20,7 +20,7 @@ public class IMatchImpl implements IMatch {
             ps = conn.prepareStatement("INSERT INTO footmatch (date,nbPlace,equipe1,equipe2,competition,idStade) " +
                     "VALUES (?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 
-            ps.setDate(1, (java.sql.Date) new Date(match.getDate().getTime()));
+            ps.setDate(1, new java.sql.Date(match.getDate().getTime()));
             ps.setInt(2, match.getNbPlace());
             ps.setString(3, match.getEquipe1());
             ps.setString(4, match.getEquipe2());
@@ -57,7 +57,7 @@ public class IMatchImpl implements IMatch {
             ps = conn.prepareStatement("UPDATE footmatch SET date = ? , nbPlace = ? , equipe1 = ? , " +
                     "equipe2 = ? , competition = ? , idStade = ? WHERE id = ?");
 
-            ps.setDate(1, (java.sql.Date) new Date(match.getDate().getTime()));
+            ps.setDate(1, new java.sql.Date(match.getDate().getTime()));
             ps.setInt(2, match.getNbPlace());
             ps.setString(3, match.getEquipe1());
             ps.setString(4, match.getEquipe2());

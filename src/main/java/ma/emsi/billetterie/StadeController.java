@@ -4,7 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -17,6 +20,7 @@ import ma.emsi.billetterie.entities.Stade;
 import ma.emsi.billetterie.services.StadeService;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -63,6 +67,12 @@ public class StadeController implements Initializable {
 
     @FXML
     private Button btnImportExcel;
+
+    @FXML
+    private Button btnMatches;
+
+    @FXML
+    private Button btnBillets;
 
     @FXML
     void clearField(ActionEvent event) {
@@ -147,5 +157,25 @@ public class StadeController implements Initializable {
         File file = fileChooser.showOpenDialog(new Stage());
         stadeService.importFromExcelFile(file.getAbsolutePath());
         showStades();
+    }
+
+    @FXML
+    void toBillets(ActionEvent event) {
+        btnBillets.getScene().getWindow().hide();
+    }
+
+    @FXML
+    void toMatches(ActionEvent event) {
+        btnMatches.getScene().getWindow().hide();
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("Match.fxml"));
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setTitle("Liste des Matches");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

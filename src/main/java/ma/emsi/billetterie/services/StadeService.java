@@ -122,4 +122,8 @@ public class StadeService {
             e.printStackTrace();
         }
     }
+
+    public Stade getStadeByNom(String nom){
+        return stadeDao.getStadeByNom(nom);
+    }
 }

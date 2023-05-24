@@ -142,5 +142,38 @@ public class IStadeImpl implements IStade {
 
     }
 
+    @Override
+    public Stade getStadeByNom(String nom){
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            ps = conn.prepareStatement("SELECT * FROM stade WHERE name = ?");
+
+           ps.setString(1, nom);
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Stade stade = new Stade();
+
+                stade.setId(rs.getInt("id"));
+                stade.setName(rs.getString("name"));
+                stade.setLieu(rs.getString("lieu"));
+                stade.setMaxPlace(rs.getInt("maxPlace"));
+
+                return stade;
+            }
+
+            return null;
+        } catch (SQLException e) {
+            System.err.println(e);;
+            return null;
+        } finally {
+            DB.closeResultSet(rs);
+            DB.closeStatement(ps);
+        }
+    }
+
 }
 
